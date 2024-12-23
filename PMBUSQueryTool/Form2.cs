@@ -140,11 +140,11 @@ namespace PMBUSQueryTool
         }
         private void Query_Click_1(object sender, EventArgs e)
         {
-            /* List<QueryResultObject> objList = doQueryTask();
+            List<QueryResultObject> objList = doQueryTask();
 
             //Log
             string msg = AssembleLog(objList);
-            AddTextToFile(msg + "\r\n");*/
+            AddTextToFile(msg + "\r\n");
 
             DataTable dataTable = new DataTable();
             dataTable.Columns.Add("Address");            
@@ -153,18 +153,19 @@ namespace PMBUSQueryTool
             dataTable.Columns.Add("Raw data");
             dataTable.Columns.Add("Display  Value");
 
-            /*
+            
             foreach (QueryResultObject obj in objList)
             {
                 dataTable.Rows.Add(obj.command, obj.description, obj.queryCommandResponse, obj.result, obj.displayResult);
                 
-            }*/
+            }
 
             //test data
+            /*
             updateDebugTextBox(RESPONSE_CASE_TEST);
             dataTable.Rows.Add("88", "E_IN", "BC", "F397", "2983");
             dataTable.Rows.Add("89", "E_OUT", "BD", "AB89", "986");
-            dataTable.Rows.Add("90", "E_WRITE", "BE", "4437", "123");
+            dataTable.Rows.Add("90", "E_WRITE", "BE", "4437", "123");*/
             dataGridView1.DataSource = dataTable;
 
             for (int i = 0; i < dataGridView1.Columns.Count; i++)
@@ -178,17 +179,19 @@ namespace PMBUSQueryTool
                 switch(i)
                 {
                     case 0:
+                        width = 60;
+                        break;
                     case 2:
-                        width = 50;
+                        width = 70;
                         break;
                     case 1:
-                        width = 80;
+                        width = 130;
                         break;
                     case 3:
-                        width = 80;
+                        width = 140;
                         break;
                     case 4:
-                        width = 80;
+                        width = 150;
                         break;
 
                 }

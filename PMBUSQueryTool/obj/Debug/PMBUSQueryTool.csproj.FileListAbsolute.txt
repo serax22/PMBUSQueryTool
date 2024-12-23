@@ -10,3 +10,14 @@ C:\Users\asus\OneDrive\文件\GitHub\ControlledLogging2\PMBUSQueryTool\PMBUSQuer
 C:\Users\asus\OneDrive\文件\GitHub\ControlledLogging2\PMBUSQueryTool\PMBUSQueryTool\bin\Debug\TIDP.SAA2.dll
 C:\Users\asus\OneDrive\文件\GitHub\ControlledLogging2\PMBUSQueryTool\PMBUSQueryTool\obj\Debug\PMBUSQue.66B3C798.Up2Date
 C:\Users\asus\OneDrive\文件\GitHub\ControlledLogging2\PMBUSQueryTool\PMBUSQueryTool\obj\Debug\PMBUSQueryTool.Form2.resources
+C:\Users\Sera.Shao\Documents\GitHub\PMBusQueryTool\PMBUSQueryTool\bin\Debug\PMBUSQueryTool.exe.config
+C:\Users\Sera.Shao\Documents\GitHub\PMBusQueryTool\PMBUSQueryTool\bin\Debug\PMBUSQueryTool.exe
+C:\Users\Sera.Shao\Documents\GitHub\PMBusQueryTool\PMBUSQueryTool\bin\Debug\PMBUSQueryTool.pdb
+C:\Users\Sera.Shao\Documents\GitHub\PMBusQueryTool\PMBUSQueryTool\obj\Debug\PMBUSQueryTool.csproj.AssemblyReference.cache
+C:\Users\Sera.Shao\Documents\GitHub\PMBusQueryTool\PMBUSQueryTool\obj\Debug\PMBUSQueryTool.Form2.resources
+C:\Users\Sera.Shao\Documents\GitHub\PMBusQueryTool\PMBUSQueryTool\obj\Debug\PMBUSQueryTool.Properties.Resources.resources
+C:\Users\Sera.Shao\Documents\GitHub\PMBusQueryTool\PMBUSQueryTool\obj\Debug\PMBUSQueryTool.csproj.GenerateResource.cache
+C:\Users\Sera.Shao\Documents\GitHub\PMBusQueryTool\PMBUSQueryTool\obj\Debug\PMBUSQueryTool.csproj.CoreCompileInputs.cache
+C:\Users\Sera.Shao\Documents\GitHub\PMBusQueryTool\PMBUSQueryTool\obj\Debug\PMBUSQue.66B3C798.Up2Date
+C:\Users\Sera.Shao\Documents\GitHub\PMBusQueryTool\PMBUSQueryTool\obj\Debug\PMBUSQueryTool.exe
+C:\Users\Sera.Shao\Documents\GitHub\PMBusQueryTool\PMBUSQueryTool\obj\Debug\PMBUSQueryTool.pdb

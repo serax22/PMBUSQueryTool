@@ -43,7 +43,7 @@ namespace PMBUSQueryTool
         public string dataformatType_BlockOfData = "111";
 
         public string ADAPTER_IS_READY = "Ready.";
-
+        public string RESULT_IS_EMPTY = "N/A";
         //Query range:86~FC
         public List<string> AddressList = new List<string>() 
         {"86","87","88","89","8B","8C","8D","8E","8F","90","91","96","97","98","9A","9B","9E","9F",
@@ -69,6 +69,23 @@ namespace PMBUSQueryTool
             "MFR_BLACKBOX_CONFIG","MFR_CLEAR_BLACKBOX","MFR_PWOK_WARNING_Time",
             "MFR_MAX_IOUT_CAPABILITY","Current_Sharing_Control"};
 
+        public List<string> Unit = new List<string>()
+        {
+            " V"," V"," V"," V"," A"," A",
+            " ℃"," ℃"," ℃",
+            " RPM"," RPM",
+            " W"," W",""," Model","","",
+            ""," V"," V"," W"," A",
+            " P"," ℃"," ℃",
+            " ℃",
+            " ℃",
+            "","",
+            "","","","",
+            "","","","",
+            "","","",
+            " A","" };
+
+        
         public List<string> TransactionResponseList = new List<string>()
         {
             "Block Read w/ PEC","Block Read w/ PEC",
@@ -521,6 +538,45 @@ namespace PMBUSQueryTool
             returnParseObjList = processDataDisplay(returnObjList, queryCommandDataformatObjList);
             return returnParseObjList;
         }
+        private double linearDataProcess(string hexString)
+        {
+            string binaryString = string.Join(string.Empty, hexString.Select(c => Convert.ToString(Convert.ToInt32(c.ToString(), 16), 2).PadLeft(4, '0')));
+            //Console.WriteLine(binaryString); // Output: 0001101000111111
+            string binaryStringLinear1 = binaryString;
+            string binaryStringLinear2 = binaryString;
+            string linear1BinaryStr = binaryStringLinear1.Substring(0, 5);
+            string linear2BionaryStr = binaryStringLinear2.Substring(5, 11);
+
+            //Console.WriteLine(linear1BinaryStr);
+            //Console.WriteLine(linear2BionaryStr);
+
+            string invertLinear1 = string.Empty;
+            for (int i = 0; i < linear1BinaryStr.Length; i++)
+            {
+                string target = linear1BinaryStr.Substring(i, 1);
+                if (target == "1")
+                {
+                    invertLinear1 += "0";
+                }
+                else if (target == "0")
+                {
+                    invertLinear1 += "1";
+                }
+            }
+            //Console.WriteLine(invertLinear1);
+            int baseNum = 2;
+            int power = (Convert.ToInt32(invertLinear1, 2) + 1) * -1;
+            int linear2 = Convert.ToInt32(linear2BionaryStr, 2);
+
+            /*
+            Console.WriteLine(linear2);
+            Console.WriteLine(power);
+            Console.WriteLine(baseNum);*/
+
+            double result = Math.Pow(baseNum, power) * linear2;
+            //Console.WriteLine(result);
+            return result;
+        }
         public List<QueryResultObject> processDataDisplay(List<QueryResultObject> objList,List<QueryCommandDataFormatObj>dataFormatObjList)
         {
             List<QueryResultObject> displayObjList = new List<QueryResultObject>();
@@ -528,29 +584,52 @@ namespace PMBUSQueryTool
             {
                 string dataFormatType = dataFormatObjList[index].dataformatType;
                 string resultValue = objList[index].result;
-                switch (dataFormatType)
+
+                if (resultValue == null||resultValue.Contains("N/A") || resultValue == string.Empty)
+                    objList[index].displayResult = RESULT_IS_EMPTY;
+                else
                 {
-                    case "000": // Linear data format(16 bit)
-                        string valueProcess = resultValue;
-                        /*
-                        int resultInt = Convert.ToInt32(valueProcess, 16);
-                        int resultInt2 = int.Parse(Convert.ToString(resultInt, 2));
-                        string result3 = string.Format("{0:d4}", 2);
-                        objList[index].displayResult = result3;*/
-                        break;
-                    case "001": // 16 bit signed number 
-                        break;
-                    case "011": // Direct Mode Format used 
-                        break;
-                    case "100": // 8 bit unsigned number 
-                        break;
-                    case "101": // VID Mode Format used 
-                        break;
-                    case "110": // Manufacturer specific format used
-                        break;
-                    //Command does not return numeric data.  This is also  used for commands that return blocks of data. 
-                    case "111":
-                        break;
+                    string unit = Unit[index];
+                    string valueProcess = string.Empty;
+                    string displayResult = string.Empty;
+                    switch (dataFormatType)
+                    {
+                        case "000": // Linear data format(16 bit)
+                            valueProcess = resultValue;                            
+                            displayResult = linearDataProcess(valueProcess).ToString() + unit;
+                            objList[index].displayResult = displayResult;                            
+                            break;
+                        case "001": // 16 bit signed number 
+                            valueProcess = resultValue;
+                            //displayResult = linearDataProcess(valueProcess).ToString() + unit;
+                            //objList[index].displayResult = displayResult;
+                            break;
+                        case "011": // Direct Mode Format used 
+                            displayResult = resultValue;
+                            objList[index].displayResult = displayResult;
+                            break;
+                        case "100": // 8 bit unsigned number 
+                            valueProcess = resultValue;
+                            //displayResult = linearDataProcess(valueProcess).ToString() + unit;
+                            //objList[index].displayResult = displayResult;
+                            break;
+                        case "101": // VID Mode Format used 
+                            valueProcess = resultValue;
+                            //displayResult = linearDataProcess(valueProcess).ToString() + unit;
+                            //objList[index].displayResult = displayResult;
+                            break;
+                        case "110": // TO DO LIST:Manufacturer specific format used
+                            valueProcess = resultValue;
+                            //displayResult = linearDataProcess(valueProcess).ToString() + unit;
+                            //objList[index].displayResult = displayResult;
+                            break;
+                        //Command does not return numeric data.  This is also  used for commands that return blocks of data. 
+                        case "111":// TO DO LIST
+                            valueProcess = resultValue;
+                            //displayResult = linearDataProcess(valueProcess).ToString() + unit;
+                            //objList[index].displayResult = valueProcess;
+                            break;
+                    }
                 }
             }
             displayObjList = objList;

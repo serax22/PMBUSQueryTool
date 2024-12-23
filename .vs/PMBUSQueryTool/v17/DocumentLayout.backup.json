@@ -1,21 +1,25 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\asus\\OneDrive\\\u6587\u4EF6\\GitHub\\ControlledLogging2\\PMBUSQueryTool\\",
+  "WorkspaceRootPath": "C:\\Users\\Sera.Shao\\Documents\\GitHub\\PMBusQueryTool\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{9A47027A-B1EB-4F87-A6EB-716307E81762}|PMBUSQueryTool\\PMBUSQueryTool.csproj|C:\\Users\\asus\\OneDrive\\\u6587\u4EF6\\GitHub\\ControlledLogging2\\PMBUSQueryTool\\pmbusquerytool\\form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{9A47027A-B1EB-4F87-A6EB-716307E81762}|PMBUSQueryTool\\PMBUSQueryTool.csproj|C:\\Users\\Sera.Shao\\Documents\\GitHub\\PMBusQueryTool\\pmbusquerytool\\form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9A47027A-B1EB-4F87-A6EB-716307E81762}|PMBUSQueryTool\\PMBUSQueryTool.csproj|solutionrelative:pmbusquerytool\\form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9A47027A-B1EB-4F87-A6EB-716307E81762}|PMBUSQueryTool\\PMBUSQueryTool.csproj|c:\\users\\asus\\onedrive\\\u6587\u4EF6\\github\\controlledlogging2\\pmbusquerytool\\pmbusquerytool\\queryrange.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9A47027A-B1EB-4F87-A6EB-716307E81762}|PMBUSQueryTool\\PMBUSQueryTool.csproj|solutionrelative:pmbusquerytool\\queryrange.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9A47027A-B1EB-4F87-A6EB-716307E81762}|PMBUSQueryTool\\PMBUSQueryTool.csproj|C:\\Users\\asus\\OneDrive\\\u6587\u4EF6\\GitHub\\ControlledLogging2\\PMBUSQueryTool\\pmbusquerytool\\form2.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{9A47027A-B1EB-4F87-A6EB-716307E81762}|PMBUSQueryTool\\PMBUSQueryTool.csproj|C:\\Users\\Sera.Shao\\Documents\\GitHub\\PMBusQueryTool\\pmbusquerytool\\form2.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9A47027A-B1EB-4F87-A6EB-716307E81762}|PMBUSQueryTool\\PMBUSQueryTool.csproj|solutionrelative:pmbusquerytool\\form2.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9A47027A-B1EB-4F87-A6EB-716307E81762}|PMBUSQueryTool\\PMBUSQueryTool.csproj|C:\\Users\\asus\\OneDrive\\\u6587\u4EF6\\GitHub\\ControlledLogging2\\PMBUSQueryTool\\pmbusquerytool\\form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{9A47027A-B1EB-4F87-A6EB-716307E81762}|PMBUSQueryTool\\PMBUSQueryTool.csproj|C:\\Users\\Sera.Shao\\Documents\\GitHub\\PMBusQueryTool\\pmbusquerytool\\queryresultobject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9A47027A-B1EB-4F87-A6EB-716307E81762}|PMBUSQueryTool\\PMBUSQueryTool.csproj|solutionrelative:pmbusquerytool\\queryresultobject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9A47027A-B1EB-4F87-A6EB-716307E81762}|PMBUSQueryTool\\PMBUSQueryTool.csproj|c:\\users\\sera.shao\\documents\\github\\pmbusquerytool\\pmbusquerytool\\queryrange.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9A47027A-B1EB-4F87-A6EB-716307E81762}|PMBUSQueryTool\\PMBUSQueryTool.csproj|solutionrelative:pmbusquerytool\\queryrange.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9A47027A-B1EB-4F87-A6EB-716307E81762}|PMBUSQueryTool\\PMBUSQueryTool.csproj|C:\\Users\\Sera.Shao\\Documents\\GitHub\\PMBusQueryTool\\pmbusquerytool\\form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{9A47027A-B1EB-4F87-A6EB-716307E81762}|PMBUSQueryTool\\PMBUSQueryTool.csproj|solutionrelative:pmbusquerytool\\form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
@@ -29,18 +33,27 @@
           "SelectedChildIndex": 2,
           "Children": [
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "QueryResultObject.cs",
+              "DocumentMoniker": "C:\\Users\\Sera.Shao\\Documents\\GitHub\\PMBusQueryTool\\PMBUSQueryTool\\QueryResultObject.cs",
+              "RelativeDocumentMoniker": "PMBUSQueryTool\\QueryResultObject.cs",
+              "ToolTip": "C:\\Users\\Sera.Shao\\Documents\\GitHub\\PMBusQueryTool\\PMBUSQueryTool\\QueryResultObject.cs",
+              "RelativeToolTip": "PMBUSQueryTool\\QueryResultObject.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-22T15:51:25.062Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "Form2.Designer.cs",
-              "DocumentMoniker": "C:\\Users\\asus\\OneDrive\\\u6587\u4EF6\\GitHub\\ControlledLogging2\\PMBUSQueryTool\\PMBUSQueryTool\\Form2.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\Sera.Shao\\Documents\\GitHub\\PMBusQueryTool\\PMBUSQueryTool\\Form2.Designer.cs",
               "RelativeDocumentMoniker": "PMBUSQueryTool\\Form2.Designer.cs",
-              "ToolTip": "C:\\Users\\asus\\OneDrive\\\u6587\u4EF6\\GitHub\\ControlledLogging2\\PMBUSQueryTool\\PMBUSQueryTool\\Form2.Designer.cs",
+              "ToolTip": "C:\\Users\\Sera.Shao\\Documents\\GitHub\\PMBusQueryTool\\PMBUSQueryTool\\Form2.Designer.cs",
               "RelativeToolTip": "PMBUSQueryTool\\Form2.Designer.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAIwNgAAAA/AAAAAAAAAA==",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAqwOEAAAA/AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-19T06:51:38.574Z",
               "EditorCaption": ""
@@ -49,22 +62,22 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Form2.cs",
-              "DocumentMoniker": "C:\\Users\\asus\\OneDrive\\\u6587\u4EF6\\GitHub\\ControlledLogging2\\PMBUSQueryTool\\PMBUSQueryTool\\Form2.cs",
+              "DocumentMoniker": "C:\\Users\\Sera.Shao\\Documents\\GitHub\\PMBusQueryTool\\PMBUSQueryTool\\Form2.cs",
               "RelativeDocumentMoniker": "PMBUSQueryTool\\Form2.cs",
-              "ToolTip": "C:\\Users\\asus\\OneDrive\\\u6587\u4EF6\\GitHub\\ControlledLogging2\\PMBUSQueryTool\\PMBUSQueryTool\\Form2.cs",
+              "ToolTip": "C:\\Users\\Sera.Shao\\Documents\\GitHub\\PMBusQueryTool\\PMBUSQueryTool\\Form2.cs",
               "RelativeToolTip": "PMBUSQueryTool\\Form2.cs",
-              "ViewState": "AgIAAJwAAAAAAAAAAAAIwKwAAAAhAAAAAAAAAA==",
+              "ViewState": "AgIAAK0AAAAAAAAAAAAAALEAAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-17T03:52:45.774Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "Form2.cs [\u8A2D\u8A08]",
-              "DocumentMoniker": "C:\\Users\\asus\\OneDrive\\\u6587\u4EF6\\GitHub\\ControlledLogging2\\PMBUSQueryTool\\PMBUSQueryTool\\Form2.cs",
+              "DocumentMoniker": "C:\\Users\\Sera.Shao\\Documents\\GitHub\\PMBusQueryTool\\PMBUSQueryTool\\Form2.cs",
               "RelativeDocumentMoniker": "PMBUSQueryTool\\Form2.cs",
-              "ToolTip": "C:\\Users\\asus\\OneDrive\\\u6587\u4EF6\\GitHub\\ControlledLogging2\\PMBUSQueryTool\\PMBUSQueryTool\\Form2.cs [\u8A2D\u8A08]",
+              "ToolTip": "C:\\Users\\Sera.Shao\\Documents\\GitHub\\PMBusQueryTool\\PMBUSQueryTool\\Form2.cs [\u8A2D\u8A08]",
               "RelativeToolTip": "PMBUSQueryTool\\Form2.cs [\u8A2D\u8A08]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-17T03:48:03.688Z",
@@ -72,13 +85,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "QueryRange.cs",
-              "DocumentMoniker": "C:\\Users\\asus\\OneDrive\\\u6587\u4EF6\\GitHub\\ControlledLogging2\\PMBUSQueryTool\\PMBUSQueryTool\\QueryRange.cs",
+              "DocumentMoniker": "C:\\Users\\Sera.Shao\\Documents\\GitHub\\PMBusQueryTool\\PMBUSQueryTool\\QueryRange.cs",
               "RelativeDocumentMoniker": "PMBUSQueryTool\\QueryRange.cs",
-              "ToolTip": "C:\\Users\\asus\\OneDrive\\\u6587\u4EF6\\GitHub\\ControlledLogging2\\PMBUSQueryTool\\PMBUSQueryTool\\QueryRange.cs",
+              "ToolTip": "C:\\Users\\Sera.Shao\\Documents\\GitHub\\PMBusQueryTool\\PMBUSQueryTool\\QueryRange.cs",
               "RelativeToolTip": "PMBUSQueryTool\\QueryRange.cs",
-              "ViewState": "AgIAAH4BAAAAAAAAAAAIwJYBAAAMAAAAAAAAAA==",
+              "ViewState": "AgIAAEICAAAAAAAAAAAqwFUAAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-13T06:30:49.483Z",
               "EditorCaption": ""
