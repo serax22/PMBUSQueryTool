@@ -44,6 +44,8 @@ namespace PMBUSQueryTool
 
         public string ADAPTER_IS_READY = "Ready.";
         public string RESULT_IS_EMPTY = "N/A";
+        private static int LINEAR_SIGNED_UNSIGNED_MIDDLEPOINT = Convert.ToInt32("01111", 2);
+
         //Query range:86~FC
         public List<string> AddressList = new List<string>() 
         {"86","87","88","89","8B","8C","8D","8E","8F","90","91","96","97","98","9A","9B","9E","9F",
@@ -71,7 +73,7 @@ namespace PMBUSQueryTool
 
         public List<string> Unit = new List<string>()
         {
-            " V"," V"," V"," V"," A"," A",
+            " V"," V"," V"," A"," V"," A",
             " ℃"," ℃"," ℃",
             " RPM"," RPM",
             " W"," W",""," Model","","",
@@ -527,11 +529,9 @@ namespace PMBUSQueryTool
                     default:
                         break;
                 }
-                
-                
                 finalReturnObj.queryCommandResponse = queryCommandDataformatObjList[i].result;   
                 finalReturnObj.command = command;
-                finalReturnObj.description = DesciprtionList[i];
+                finalReturnObj.description = objList[i].description;
                 returnObjList.Add(finalReturnObj);
                 
             }
@@ -541,40 +541,40 @@ namespace PMBUSQueryTool
         private double linearDataProcess(string hexString)
         {
             string binaryString = string.Join(string.Empty, hexString.Select(c => Convert.ToString(Convert.ToInt32(c.ToString(), 16), 2).PadLeft(4, '0')));
-            //Console.WriteLine(binaryString); // Output: 0001101000111111
+            
             string binaryStringLinear1 = binaryString;
             string binaryStringLinear2 = binaryString;
             string linear1BinaryStr = binaryStringLinear1.Substring(0, 5);
             string linear2BionaryStr = binaryStringLinear2.Substring(5, 11);
-
-            //Console.WriteLine(linear1BinaryStr);
-            //Console.WriteLine(linear2BionaryStr);
-
-            string invertLinear1 = string.Empty;
-            for (int i = 0; i < linear1BinaryStr.Length; i++)
+            
+            int valueInt = Convert.ToInt32(linear1BinaryStr);
+            int power = 0;
+            //signed or unsigned value transfer
+            if (valueInt > LINEAR_SIGNED_UNSIGNED_MIDDLEPOINT)
             {
-                string target = linear1BinaryStr.Substring(i, 1);
-                if (target == "1")
+                string invertLinear1 = string.Empty;
+                for (int i = 0; i < linear1BinaryStr.Length; i++)
                 {
-                    invertLinear1 += "0";
+                    string target = linear1BinaryStr.Substring(i, 1);
+                    if (target == "1")
+                    {
+                        invertLinear1 += "0";
+                    }
+                    else if (target == "0")
+                    {
+                        invertLinear1 += "1";
+                    }
                 }
-                else if (target == "0")
-                {
-                    invertLinear1 += "1";
-                }
+                power = (Convert.ToInt32(invertLinear1, 2) + 1) * -1;
             }
-            //Console.WriteLine(invertLinear1);
-            int baseNum = 2;
-            int power = (Convert.ToInt32(invertLinear1, 2) + 1) * -1;
-            int linear2 = Convert.ToInt32(linear2BionaryStr, 2);
-
-            /*
-            Console.WriteLine(linear2);
-            Console.WriteLine(power);
-            Console.WriteLine(baseNum);*/
-
-            double result = Math.Pow(baseNum, power) * linear2;
-            //Console.WriteLine(result);
+            else
+            {
+                power = valueInt;
+            }
+            
+            int baseNum = 2;            
+            int linear2 = Convert.ToInt32(linear2BionaryStr, 2);            
+            double result = Math.Pow(baseNum, power) * linear2;            
             return result;
         }
         public List<QueryResultObject> processDataDisplay(List<QueryResultObject> objList,List<QueryCommandDataFormatObj>dataFormatObjList)
@@ -594,40 +594,39 @@ namespace PMBUSQueryTool
                     string displayResult = string.Empty;
                     switch (dataFormatType)
                     {
-                        case "000": // Linear data format(16 bit)
+                        case "000": // Linear data format(16 bit),A0
                             valueProcess = resultValue;                            
                             displayResult = linearDataProcess(valueProcess).ToString() + unit;
                             objList[index].displayResult = displayResult;                            
                             break;
-                        case "001": // 16 bit signed number 
-                            valueProcess = resultValue;
-                            //displayResult = linearDataProcess(valueProcess).ToString() + unit;
-                            //objList[index].displayResult = displayResult;
+                        case "001": // 16 bit signed number                             
+                            displayResult = Convert.ToInt32(resultValue, 2).ToString() + unit;
+                            objList[index].displayResult = displayResult;
                             break;
-                        case "011": // Direct Mode Format used 
+                        case "011": // Direct Mode Format used,AC
                             displayResult = resultValue;
                             objList[index].displayResult = displayResult;
                             break;
                         case "100": // 8 bit unsigned number 
-                            valueProcess = resultValue;
-                            //displayResult = linearDataProcess(valueProcess).ToString() + unit;
+                            displayResult = Convert.ToInt32(resultValue, 2).ToString() + unit;
+                            objList[index].displayResult = displayResult;
+                            break;
+                        // VID Mode Format used 
+                        // temporarily no requirement fo this command type
+                        case "101":
+                            //displayResult = resultValue;                           
                             //objList[index].displayResult = displayResult;
                             break;
-                        case "101": // VID Mode Format used 
-                            valueProcess = resultValue;
-                            //displayResult = linearDataProcess(valueProcess).ToString() + unit;
-                            //objList[index].displayResult = displayResult;
+                        //Manufacturer specific format used                        
+                        case "110":
+                            displayResult = resultValue;                            
+                            objList[index].displayResult = displayResult+unit;
                             break;
-                        case "110": // TO DO LIST:Manufacturer specific format used
-                            valueProcess = resultValue;
-                            //displayResult = linearDataProcess(valueProcess).ToString() + unit;
-                            //objList[index].displayResult = displayResult;
-                            break;
-                        //Command does not return numeric data.  This is also  used for commands that return blocks of data. 
-                        case "111":// TO DO LIST
-                            valueProcess = resultValue;
-                            //displayResult = linearDataProcess(valueProcess).ToString() + unit;
-                            //objList[index].displayResult = valueProcess;
+                        //Command does not return numeric data.
+                        //This is also  used for commands that return blocks of data.                        
+                        case "111":// BC
+                            displayResult = resultValue;                            
+                            objList[index].displayResult = displayResult+unit;
                             break;
                     }
                 }
