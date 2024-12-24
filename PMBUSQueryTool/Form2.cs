@@ -23,6 +23,7 @@ namespace PMBUSQueryTool
         private int defaultInterval = 1000;
         private int delayInterval = 3000;
         public bool pollingflag = true;
+        public bool timerStopFlag = false;
         public System.Windows.Forms.Timer myTimer;
 
         public static int RESPONSE_CASE_CHECKADAPTER = -1;
@@ -102,7 +103,8 @@ namespace PMBUSQueryTool
             string msg = string.Empty;
             foreach (QueryResultObject obj in objList)    
             {
-                msg = obj.command+"  "+obj.description +"  "+obj.queryCommandResponse+"  "+obj.result+ "\r\n";
+                msg += obj.command+"  "+obj.description +"  "
+                      +obj.queryCommandResponse+"  "+obj.result+"  "+ obj.displayResult+"\r\n";
             }
 
             return msg;
@@ -138,36 +140,25 @@ namespace PMBUSQueryTool
             return resultObjList;  
 
         }
-        private void Query_Click_1(object sender, EventArgs e)
+        private void packetDatagridDataSource(List<QueryResultObject> objList)
         {
-            List<QueryResultObject> objList = doQueryTask();
-
-            //Log
-            string msg = AssembleLog(objList);
-            AddTextToFile(msg + "\r\n");
-
             DataTable dataTable = new DataTable();
-            dataTable.Columns.Add("Address");            
+            dataTable.Columns.Add("Address");
             dataTable.Columns.Add("Description");
             dataTable.Columns.Add("Query");
             dataTable.Columns.Add("Raw data");
             dataTable.Columns.Add("Display  Value");
 
-            
+
             foreach (QueryResultObject obj in objList)
             {
                 dataTable.Rows.Add(obj.command, obj.description, obj.queryCommandResponse, obj.result, obj.displayResult);
-                
+
             }
-
-            //test data
-            /*
-            updateDebugTextBox(RESPONSE_CASE_TEST);
-            dataTable.Rows.Add("88", "E_IN", "BC", "F397", "2983");
-            dataTable.Rows.Add("89", "E_OUT", "BD", "AB89", "986");
-            dataTable.Rows.Add("90", "E_WRITE", "BE", "4437", "123");*/
             dataGridView1.DataSource = dataTable;
-
+        }
+        private void settingDatagridFieldWidth()
+        {
             for (int i = 0; i < dataGridView1.Columns.Count; i++)
             {
                 // Store Auto Sized Widths:
@@ -176,7 +167,7 @@ namespace PMBUSQueryTool
                 dataGridView1.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
                 // Set Width to calculated AutoSize value:
                 int width = 50;
-                switch(i)
+                switch (i)
                 {
                     case 0:
                         width = 60;
@@ -197,37 +188,76 @@ namespace PMBUSQueryTool
                 }
                 dataGridView1.Columns[i].Width = width;
             }
+        }
+        private void queryAndProcessDataValue()
+        {
+            List<QueryResultObject> objList = doQueryTask();
 
+            //Log
+            string msg = AssembleLog(objList);
+            AddTextToFile(msg + "\r\n");
+
+            packetDatagridDataSource(objList);
+            settingDatagridFieldWidth();
+        }
+        private void Query_Click_1(object sender, EventArgs e)
+        {
+            /* List<QueryResultObject> objList = doQueryTask();
+
+             //Log
+             string msg = AssembleLog(objList);
+             AddTextToFile(msg + "\r\n");
+
+             packetDatagridDataSource(objList);            
+             settingDatagridFieldWidth(); */
+
+            queryAndProcessDataValue();
         }
 
         private void updateDataTable(object sender, EventArgs e)
         {
-            List<QueryResultObject> objList = doQueryTask();
-            pollinglogmsg+= AssembleLog(objList);
+            if (timerStopFlag)
+            {
+                myTimer.Stop();
+                return;
+            }
+            else
+            {
+                pollinglogmsg += "----------------------------------------------------";
+                pollinglogmsg += "----------------------------------------------------";
+                pollinglogmsg += "\r\n";
 
-            
+                List<QueryResultObject> objList = doQueryTask();
+                pollinglogmsg += AssembleLog(objList);
+                packetDatagridDataSource(objList);
+                settingDatagridFieldWidth();
+            }
+
+
         }
-        private void button1_Click(object sender, EventArgs e)
+        private void polling_button_Click(object sender, EventArgs e)
         {
             int sleeptimeinterval = defaultInterval; //s
             sleeptimeinterval = int.Parse(this.textBox_interval.Text) * 1000;
 
             ClearTextBox();
-            doQueryTask();
 
-            pollinglogmsg = string.Empty;
+            List<QueryResultObject> objList = doQueryTask();
+            pollinglogmsg += AssembleLog(objList);
+
             //setting timer
+            timerStopFlag = false;
             myTimer = new System.Windows.Forms.Timer();
             myTimer.Interval = sleeptimeinterval; // 設置間隔為 1 秒
-            myTimer.Tick += new EventHandler(updateDataTable);
+            myTimer.Tick += new EventHandler(updateDataTable);            
             myTimer.Start();
 
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            AddTextToFile(pollinglogmsg + "\r\n");            
-            myTimer.Stop();
+            timerStopFlag = true;
+            AddTextToFile(pollinglogmsg + "\r\n");                             
             updateDebugTextBox(RESPONSE_CASE_POLLING_STOP);
         }
 

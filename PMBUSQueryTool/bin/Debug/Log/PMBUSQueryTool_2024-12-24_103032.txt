@@ -1,2 +1,0 @@
-FC  Current_Sharing_Control  N/A  90
-

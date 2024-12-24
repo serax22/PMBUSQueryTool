@@ -35,13 +35,13 @@ namespace PMBUSQueryTool
             this.textBox_Debug = new System.Windows.Forms.TextBox();
             this.Query = new System.Windows.Forms.Button();
             this.txextBox_Address = new System.Windows.Forms.TextBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
             this.textBox_interval = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.Poll = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
             this.checkBox1_all = new System.Windows.Forms.CheckBox();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -52,14 +52,14 @@ namespace PMBUSQueryTool
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30.35714F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 69.64286F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 102F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 849F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 850F));
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.textBox_Debug, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.Query, 2, 2);
             this.tableLayoutPanel1.Controls.Add(this.txextBox_Address, 1, 2);
             this.tableLayoutPanel1.Controls.Add(this.label2, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.textBox_interval, 1, 3);
-            this.tableLayoutPanel1.Controls.Add(this.button1, 2, 3);
+            this.tableLayoutPanel1.Controls.Add(this.Poll, 2, 3);
             this.tableLayoutPanel1.Controls.Add(this.button2, 3, 3);
             this.tableLayoutPanel1.Controls.Add(this.checkedListBox1, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.checkBox1_all, 0, 0);
@@ -92,16 +92,16 @@ namespace PMBUSQueryTool
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox_Debug.BackColor = System.Drawing.Color.Black;
             this.textBox_Debug.ForeColor = System.Drawing.Color.Lime;
-            this.textBox_Debug.Location = new System.Drawing.Point(334, 3);
+            this.textBox_Debug.Location = new System.Drawing.Point(333, 3);
             this.textBox_Debug.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.textBox_Debug.Name = "textBox_Debug";
-            this.textBox_Debug.Size = new System.Drawing.Size(842, 25);
+            this.textBox_Debug.Size = new System.Drawing.Size(843, 25);
             this.textBox_Debug.TabIndex = 5;
             // 
             // Query
             // 
             this.Query.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.Query.Location = new System.Drawing.Point(238, 380);
+            this.Query.Location = new System.Drawing.Point(237, 380);
             this.Query.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Query.Name = "Query";
             this.Query.Size = new System.Drawing.Size(89, 33);
@@ -116,22 +116,9 @@ namespace PMBUSQueryTool
             this.txextBox_Address.Location = new System.Drawing.Point(72, 384);
             this.txextBox_Address.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txextBox_Address.Name = "txextBox_Address";
-            this.txextBox_Address.Size = new System.Drawing.Size(153, 25);
+            this.txextBox_Address.Size = new System.Drawing.Size(152, 25);
             this.txextBox_Address.TabIndex = 3;
             this.txextBox_Address.Text = "B4";
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(333, 36);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 62;
-            this.dataGridView1.RowTemplate.Height = 31;
-            this.dataGridView1.Size = new System.Drawing.Size(844, 318);
-            this.dataGridView1.TabIndex = 4;
             // 
             // label2
             // 
@@ -150,21 +137,21 @@ namespace PMBUSQueryTool
             this.textBox_interval.Location = new System.Drawing.Point(72, 425);
             this.textBox_interval.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox_interval.Name = "textBox_interval";
-            this.textBox_interval.Size = new System.Drawing.Size(153, 25);
+            this.textBox_interval.Size = new System.Drawing.Size(152, 25);
             this.textBox_interval.TabIndex = 8;
             this.textBox_interval.Text = "1";
             // 
-            // button1
+            // Poll
             // 
-            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.button1.Location = new System.Drawing.Point(238, 421);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(89, 33);
-            this.button1.TabIndex = 9;
-            this.button1.Text = "Poll";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.Poll.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.Poll.Location = new System.Drawing.Point(237, 421);
+            this.Poll.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Poll.Name = "Poll";
+            this.Poll.Size = new System.Drawing.Size(89, 33);
+            this.Poll.TabIndex = 9;
+            this.Poll.Text = "Poll";
+            this.Poll.UseVisualStyleBackColor = true;
+            this.Poll.Click += new System.EventHandler(this.polling_button_Click);
             // 
             // button2
             // 
@@ -201,6 +188,19 @@ namespace PMBUSQueryTool
             this.checkBox1_all.UseVisualStyleBackColor = true;
             this.checkBox1_all.CheckedChanged += new System.EventHandler(this.checkBox1_all_CheckedChanged);
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(332, 36);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersWidth = 62;
+            this.dataGridView1.RowTemplate.Height = 31;
+            this.dataGridView1.Size = new System.Drawing.Size(845, 318);
+            this.dataGridView1.TabIndex = 4;
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
@@ -228,7 +228,7 @@ namespace PMBUSQueryTool
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         public System.Windows.Forms.TextBox textBox_interval;
-        public System.Windows.Forms.Button button1;
+        public System.Windows.Forms.Button Poll;
         public System.Windows.Forms.Button button2;
         private System.Windows.Forms.CheckBox checkBox1_all;
     }

@@ -50,7 +50,7 @@ namespace PMBUSQueryTool
         public List<string> AddressList = new List<string>() 
         {"86","87","88","89","8B","8C","8D","8E","8F","90","91","96","97","98","9A","9B","9E","9F",
          "A0","A1","A3","A6","A7","A8","A9","C0","C1","D0","D4","D5","D6","D7","D8","D9",
-        "DC","DD","DE","DF","E0","F0","F1","FC"};
+         "DD","DE","DF","E0","F0","F1","FC"};
 
         public List<string> DesciprtionList = new List<string>()
         {
@@ -67,7 +67,7 @@ namespace PMBUSQueryTool
             "MFR_MAX_TEMP_2",// (hot Spot)
             "MFR_WAKEUP_REDUNDANCY","MFR_HW_COMPATIBILITY",
             "MFR_FWUPLOAD_CAPABILITY","MFR_FWUPLOAD_MODE","MFR_FWUPLOAD","MFR_FWUPLOAD_STATUS",
-            "MFR_FW_REVISION","MFR_BLACKBOX","MFR_REAL_TIME_BLACK_BOX","MFR_SYSTEM_BLACK_BOX",
+            "MFR_FW_REVISION","MFR_REAL_TIME_BLACK_BOX","MFR_SYSTEM_BLACK_BOX",
             "MFR_BLACKBOX_CONFIG","MFR_CLEAR_BLACKBOX","MFR_PWOK_WARNING_Time",
             "MFR_MAX_IOUT_CAPABILITY","Current_Sharing_Control"};
 
@@ -83,7 +83,7 @@ namespace PMBUSQueryTool
             " ℃",
             "","",
             "","","","",
-            "","","","",
+            "","","",
             "","","",
             " A","" };
 
@@ -618,13 +618,13 @@ namespace PMBUSQueryTool
                             //objList[index].displayResult = displayResult;
                             break;
                         //Manufacturer specific format used                        
-                        case "110":
+                        case "110"://F8
                             displayResult = resultValue;                            
                             objList[index].displayResult = displayResult+unit;
                             break;
                         //Command does not return numeric data.
                         //This is also  used for commands that return blocks of data.                        
-                        case "111":// BC
+                        case "111"://BC
                             displayResult = resultValue;                            
                             objList[index].displayResult = displayResult+unit;
                             break;
