@@ -494,7 +494,8 @@ namespace PMBUSQueryTool
             }
             return returnDataFormObjList;
         }
-       
+        
+        
         public List<QueryResultObject> doQuery(List<PMBusQueryObject> objList)
         {
             List<QueryResultObject> returnObjList = new List<QueryResultObject>();

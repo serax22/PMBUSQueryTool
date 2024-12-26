@@ -115,6 +115,7 @@ namespace PMBUSQueryTool
         {
             List<PMBusQueryObject> queryItemList = new List<PMBusQueryObject>();
             List<QueryResultObject> resultObjList = new List<QueryResultObject>();
+           
             QueryRange query = new QueryRange();
 
             foreach (int index in checkedListBox1.CheckedIndices)
@@ -127,7 +128,7 @@ namespace PMBUSQueryTool
                 queryItemList.Add(obj);
                
             }
-
+            
             resultObjList = query.doQuery(queryItemList);
             if(resultObjList.Count == 0)
             {
@@ -191,6 +192,8 @@ namespace PMBUSQueryTool
         }
         private void queryAndProcessDataValue()
         {
+            GPIB gpib = new GPIB();
+            gpib.settingTestEnviroment(true, this.txextBox_Address.Text);
             List<QueryResultObject> objList = doQueryTask();
 
             //Log
@@ -199,18 +202,11 @@ namespace PMBUSQueryTool
 
             packetDatagridDataSource(objList);
             settingDatagridFieldWidth();
+            
+            gpib.settingTestEnviroment(false, this.txextBox_Address.Text);
         }
         private void Query_Click_1(object sender, EventArgs e)
         {
-            /* List<QueryResultObject> objList = doQueryTask();
-
-             //Log
-             string msg = AssembleLog(objList);
-             AddTextToFile(msg + "\r\n");
-
-             packetDatagridDataSource(objList);            
-             settingDatagridFieldWidth(); */
-
             queryAndProcessDataValue();
         }
 
@@ -242,6 +238,9 @@ namespace PMBUSQueryTool
 
             ClearTextBox();
 
+            GPIB gpib = new GPIB();
+            gpib.settingTestEnviroment(true, this.txextBox_Address.Text);
+
             List<QueryResultObject> objList = doQueryTask();
             pollinglogmsg += AssembleLog(objList);
 
@@ -259,6 +258,9 @@ namespace PMBUSQueryTool
             timerStopFlag = true;
             AddTextToFile(pollinglogmsg + "\r\n");                             
             updateDebugTextBox(RESPONSE_CASE_POLLING_STOP);
+
+            GPIB gpib = new GPIB();
+            gpib.settingTestEnviroment(false, this.txextBox_Address.Text);
         }
 
         private void checkBox1_all_CheckedChanged(object sender, EventArgs e)
