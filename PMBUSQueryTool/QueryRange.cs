@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Net;
+using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading;
@@ -45,16 +47,19 @@ namespace PMBUSQueryTool
         public string ADAPTER_IS_READY = "Ready.";
         public string RESULT_IS_EMPTY = "N/A";
         private static int LINEAR_SIGNED_UNSIGNED_MIDDLEPOINT = Convert.ToInt32("01111", 2);
+        private static string VOUT_MODE_ADDRESS = "20";
+        private static string READ_VOUT_ADDRESS = "8B";
+
 
         //Query range:86~FC
         public List<string> AddressList = new List<string>() 
-        {"86","87","88","89","8B","8C","8D","8E","8F","90","91","96","97","98","9A","9B","9E","9F",
+        {"20","86","87","88","89","8B","8C","8D","8E","8F","90","91","96","97","98","9A","9B","9E","9F",
          "A0","A1","A3","A6","A7","A8","A9","C0","C1","D0","D4","D5","D6","D7","D8","D9",
          "DD","DE","DF","E0","F0","F1","FC"};
 
         public List<string> DesciprtionList = new List<string>()
         {
-            "READ_EIN","READ_EOUT","READ_VIN","READ_IIN","READ_VOUT","READ_IOUT",
+            "VOUT_MODE","READ_EIN","READ_EOUT","READ_VIN","READ_IIN","READ_VOUT","READ_IOUT",
             "READ_TEMPERATURE_1",//(Ambient)
             "READ_TEMPERATURE_2",// (Hot Spot)"
             "READ_TEMPERATURE_3", //(PFC Heatsink)"
@@ -73,7 +78,7 @@ namespace PMBUSQueryTool
 
         public List<string> Unit = new List<string>()
         {
-            " V"," V"," V"," A"," V"," A",
+            " V"," V"," V"," V"," A"," V"," A",
             " ℃"," ℃"," ℃",
             " RPM"," RPM",
             " W"," W",""," Model","","",
@@ -90,7 +95,7 @@ namespace PMBUSQueryTool
         
         public List<string> TransactionResponseList = new List<string>()
         {
-            "Block Read w/ PEC","Block Read w/ PEC",
+            "Read Byte w/PEC","Read Byte w/PEC","Block Read w/ PEC","Block Read w/ PEC",
             "Read Word w/PEC","Read Word w/PEC","Read Word w/PEC","Read Word w/PEC","Read Word w/PEC",
             "Read Word w/PEC","Read Word w/PEC","Read Word w/PEC","Read Word w/PEC","Read Word w/PEC",
             "Read Word w/PEC","Read Byte w/PEC","Block Read","Block Read","Block Read",
@@ -401,6 +406,7 @@ namespace PMBUSQueryTool
                 case "F0":
                     queryType = "ReadWord";
                     break;
+                case "20":
                 case "98":
                 case "9F":
                 case "D0":
@@ -488,6 +494,7 @@ namespace PMBUSQueryTool
             }
             return returnDataFormObjList;
         }
+       
         public List<QueryResultObject> doQuery(List<PMBusQueryObject> objList)
         {
             List<QueryResultObject> returnObjList = new List<QueryResultObject>();
@@ -529,6 +536,7 @@ namespace PMBUSQueryTool
                     default:
                         break;
                 }
+
                 finalReturnObj.queryCommandResponse = queryCommandDataformatObjList[i].result;   
                 finalReturnObj.command = command;
                 finalReturnObj.description = objList[i].description;
@@ -536,7 +544,55 @@ namespace PMBUSQueryTool
                 
             }
             returnParseObjList = processDataDisplay(returnObjList, queryCommandDataformatObjList);
+            returnParseObjList = addCustomizedResult(returnParseObjList);
             return returnParseObjList;
+        }
+        private string signedUnsingedTransfer(string signedValueStr)
+        {
+            int valueInt = Convert.ToInt32(signedValueStr, 2);
+            string unsignedValueStr = string.Empty;
+            
+            //signed or unsigned value transfer
+            if (valueInt > LINEAR_SIGNED_UNSIGNED_MIDDLEPOINT)
+            {
+                
+                for (int i = 0; i < signedValueStr.Length; i++)
+                {
+                    string target = signedValueStr.Substring(i, 1);
+                    if (target == "1")
+                    {
+                        unsignedValueStr += "0";
+                    }
+                    else if (target == "0")
+                    {
+                        unsignedValueStr += "1";
+                    }
+                }
+               
+            }
+            else
+            {
+                unsignedValueStr = signedValueStr;
+            }
+                        
+            return unsignedValueStr;
+        }
+        private int transferSingnedValueToUnsigned(string trnasferBinaryStr,int unsignedMiddlePoint)
+        {
+            int result = 0;
+            int valueInt = Convert.ToInt32(trnasferBinaryStr, 2);
+            string unsignedBinaryStr = string.Empty;
+
+            if (valueInt > LINEAR_SIGNED_UNSIGNED_MIDDLEPOINT)
+            {
+                unsignedBinaryStr = signedUnsingedTransfer(trnasferBinaryStr);
+                result = (Convert.ToInt32(unsignedBinaryStr, 2) + 1) * -1;
+            }
+            else
+            {
+                result = valueInt;
+            }
+            return result;
         }
         private double linearDataProcess(string hexString)
         {
@@ -546,36 +602,65 @@ namespace PMBUSQueryTool
             string binaryStringLinear2 = binaryString;
             string linear1BinaryStr = binaryStringLinear1.Substring(0, 5);
             string linear2BionaryStr = binaryStringLinear2.Substring(5, 11);
-            
-            int valueInt = Convert.ToInt32(linear1BinaryStr);
-            int power = 0;
-            //signed or unsigned value transfer
-            if (valueInt > LINEAR_SIGNED_UNSIGNED_MIDDLEPOINT)
-            {
-                string invertLinear1 = string.Empty;
-                for (int i = 0; i < linear1BinaryStr.Length; i++)
-                {
-                    string target = linear1BinaryStr.Substring(i, 1);
-                    if (target == "1")
-                    {
-                        invertLinear1 += "0";
-                    }
-                    else if (target == "0")
-                    {
-                        invertLinear1 += "1";
-                    }
-                }
-                power = (Convert.ToInt32(invertLinear1, 2) + 1) * -1;
-            }
-            else
-            {
-                power = valueInt;
-            }
-            
+            int power = transferSingnedValueToUnsigned(linear1BinaryStr, LINEAR_SIGNED_UNSIGNED_MIDDLEPOINT);
+
             int baseNum = 2;            
             int linear2 = Convert.ToInt32(linear2BionaryStr, 2);            
             double result = Math.Pow(baseNum, power) * linear2;            
             return result;
+        }
+        private string hex2Int2Binary(string hexString)
+        {
+            int valueInt = Convert.ToInt32(hexString, 16);
+            string strBinary = Convert.ToString(valueInt, 2);
+            return strBinary;
+        }
+        private List<QueryResultObject> addCustomizedResult(List<QueryResultObject> objList)
+        {
+            List<QueryResultObject> resultList = new List<QueryResultObject>();
+            bool vout_mode_exist = false;
+            bool read_vout_exist = false;
+            int read_vout_index = -1;
+            for (int index = 0; index < objList.Count;index++)
+            {
+                if(index == 0)
+                {
+                    if(objList[index].command == VOUT_MODE_ADDRESS)
+                    {
+                        vout_mode_exist = true;    
+                        continue;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+
+                if (objList[index].command == READ_VOUT_ADDRESS)
+                {
+                    read_vout_exist = true;
+                    read_vout_index = index;
+                    break;
+                }
+
+            }
+            if(vout_mode_exist && read_vout_exist)
+            {
+                string vout_mode_hex = objList[0].result;
+                string vout_mode_binary = hex2Int2Binary(vout_mode_hex);
+                string read_vout = objList[read_vout_index].result;
+
+                int vout_mode_int = transferSingnedValueToUnsigned(vout_mode_binary, LINEAR_SIGNED_UNSIGNED_MIDDLEPOINT);
+                int read_vout_int = Convert.ToInt32(read_vout, 16);
+                double baseNum = 2;
+                double powNum = Math.Pow(baseNum, vout_mode_int);
+                double customized_vout_value = powNum* read_vout_int;
+                objList[read_vout_index].displayResult = customized_vout_value.ToString() + Unit[read_vout_index];
+
+            }
+            
+            resultList = objList;
+            return resultList;
         }
         public List<QueryResultObject> processDataDisplay(List<QueryResultObject> objList,List<QueryCommandDataFormatObj>dataFormatObjList)
         {
@@ -585,7 +670,7 @@ namespace PMBUSQueryTool
                 string dataFormatType = dataFormatObjList[index].dataformatType;
                 string resultValue = objList[index].result;
 
-                if (resultValue == null||resultValue.Contains("N/A") || resultValue == string.Empty)
+                if (resultValue == null||resultValue.Contains("N/A") || resultValue == string.Empty)    
                     objList[index].displayResult = RESULT_IS_EMPTY;
                 else
                 {

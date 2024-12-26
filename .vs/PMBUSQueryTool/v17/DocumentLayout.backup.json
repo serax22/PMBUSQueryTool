@@ -11,16 +11,12 @@
       "RelativeMoniker": "D:0:0:{9A47027A-B1EB-4F87-A6EB-716307E81762}|PMBUSQueryTool\\PMBUSQueryTool.csproj|solutionrelative:pmbusquerytool\\form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9A47027A-B1EB-4F87-A6EB-716307E81762}|PMBUSQueryTool\\PMBUSQueryTool.csproj|C:\\Users\\Sera.Shao\\Documents\\GitHub\\PMBusQueryTool\\pmbusquerytool\\form2.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9A47027A-B1EB-4F87-A6EB-716307E81762}|PMBUSQueryTool\\PMBUSQueryTool.csproj|solutionrelative:pmbusquerytool\\form2.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9A47027A-B1EB-4F87-A6EB-716307E81762}|PMBUSQueryTool\\PMBUSQueryTool.csproj|C:\\Users\\Sera.Shao\\Documents\\GitHub\\PMBusQueryTool\\pmbusquerytool\\queryresultobject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9A47027A-B1EB-4F87-A6EB-716307E81762}|PMBUSQueryTool\\PMBUSQueryTool.csproj|solutionrelative:pmbusquerytool\\queryresultobject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{9A47027A-B1EB-4F87-A6EB-716307E81762}|PMBUSQueryTool\\PMBUSQueryTool.csproj|C:\\Users\\Sera.Shao\\Documents\\GitHub\\PMBusQueryTool\\pmbusquerytool\\form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{9A47027A-B1EB-4F87-A6EB-716307E81762}|PMBUSQueryTool\\PMBUSQueryTool.csproj|solutionrelative:pmbusquerytool\\form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9A47027A-B1EB-4F87-A6EB-716307E81762}|PMBUSQueryTool\\PMBUSQueryTool.csproj|C:\\Users\\Sera.Shao\\Documents\\GitHub\\PMBusQueryTool\\pmbusquerytool\\form2.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9A47027A-B1EB-4F87-A6EB-716307E81762}|PMBUSQueryTool\\PMBUSQueryTool.csproj|solutionrelative:pmbusquerytool\\form2.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,24 +26,11 @@
       "DocumentGroups": [
         {
           "DockedHeight": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "QueryResultObject.cs",
-              "DocumentMoniker": "C:\\Users\\Sera.Shao\\Documents\\GitHub\\PMBusQueryTool\\PMBUSQueryTool\\QueryResultObject.cs",
-              "RelativeDocumentMoniker": "PMBUSQueryTool\\QueryResultObject.cs",
-              "ToolTip": "C:\\Users\\Sera.Shao\\Documents\\GitHub\\PMBusQueryTool\\PMBUSQueryTool\\QueryResultObject.cs",
-              "RelativeToolTip": "PMBUSQueryTool\\QueryResultObject.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-22T15:51:25.062Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
               "Title": "Form2.Designer.cs",
               "DocumentMoniker": "C:\\Users\\Sera.Shao\\Documents\\GitHub\\PMBusQueryTool\\PMBUSQueryTool\\Form2.Designer.cs",
               "RelativeDocumentMoniker": "PMBUSQueryTool\\Form2.Designer.cs",
@@ -66,14 +49,14 @@
               "RelativeDocumentMoniker": "PMBUSQueryTool\\Form2.cs",
               "ToolTip": "C:\\Users\\Sera.Shao\\Documents\\GitHub\\PMBusQueryTool\\PMBUSQueryTool\\Form2.cs",
               "RelativeToolTip": "PMBUSQueryTool\\Form2.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAPAAAAAAAAAA==",
+              "ViewState": "AgIAAFQAAAAAAAAAAAAAAAkAAAATAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-17T03:52:45.774Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 2,
               "Title": "Form2.cs [\u8A2D\u8A08]",
               "DocumentMoniker": "C:\\Users\\Sera.Shao\\Documents\\GitHub\\PMBusQueryTool\\PMBUSQueryTool\\Form2.cs",
               "RelativeDocumentMoniker": "PMBUSQueryTool\\Form2.cs",
@@ -91,7 +74,7 @@
               "RelativeDocumentMoniker": "PMBUSQueryTool\\QueryRange.cs",
               "ToolTip": "C:\\Users\\Sera.Shao\\Documents\\GitHub\\PMBusQueryTool\\PMBUSQueryTool\\QueryRange.cs",
               "RelativeToolTip": "PMBUSQueryTool\\QueryRange.cs",
-              "ViewState": "AgIAAEUAAAAAAAAAAAAAAFUAAAAPAAAAAAAAAA==",
+              "ViewState": "AgIAAI4CAAAAAAAAAAAawJoCAABTAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-13T06:30:49.483Z",
               "EditorCaption": ""

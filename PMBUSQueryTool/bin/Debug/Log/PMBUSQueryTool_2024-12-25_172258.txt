@@ -1,0 +1,4 @@
+20  VOUT_MODE  BC  17  17 V
+8B  READ_VOUT  A0  1877  952 V
+20+BD  Calculated_Read_Vout  Programm Calculated  2.11833903510889E+87  2.11833903510889E+87 V
+
