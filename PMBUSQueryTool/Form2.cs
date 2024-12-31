@@ -203,7 +203,7 @@ namespace PMBUSQueryTool
             packetDatagridDataSource(objList);
             settingDatagridFieldWidth();
             
-            gpib.settingTestEnviroment(false, this.txextBox_Address.Text);
+            //gpib.settingTestEnviroment(false, this.txextBox_Address.Text);
         }
         private void Query_Click_1(object sender, EventArgs e)
         {
@@ -282,6 +282,11 @@ namespace PMBUSQueryTool
                 }
                 selectedAllFlag = true;
             }
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
