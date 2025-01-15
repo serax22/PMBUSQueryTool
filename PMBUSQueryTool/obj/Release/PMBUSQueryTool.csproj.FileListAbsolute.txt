@@ -1,0 +1,13 @@
+C:\Users\Sera.Shao\Documents\GitHub\PMBusQueryTool\PMBUSQueryTool\obj\Release\PMBUSQueryTool.csproj.AssemblyReference.cache
+C:\Users\Sera.Shao\Documents\GitHub\PMBusQueryTool\PMBUSQueryTool\obj\Release\PMBUSQueryTool.Properties.Resources.resources
+C:\Users\Sera.Shao\Documents\GitHub\PMBusQueryTool\PMBUSQueryTool\obj\Release\PMBUSQueryTool.csproj.GenerateResource.cache
+C:\Users\Sera.Shao\Documents\GitHub\PMBusQueryTool\PMBUSQueryTool\obj\Release\PMBUSQueryTool.csproj.CoreCompileInputs.cache
+C:\Users\Sera.Shao\Documents\GitHub\PMBusQueryTool\PMBUSQueryTool\bin\Release\PMBUSQueryTool.exe.config
+C:\Users\Sera.Shao\Documents\GitHub\PMBusQueryTool\PMBUSQueryTool\bin\Release\PMBUSQueryTool.exe
+C:\Users\Sera.Shao\Documents\GitHub\PMBusQueryTool\PMBUSQueryTool\bin\Release\PMBUSQueryTool.pdb
+C:\Users\Sera.Shao\Documents\GitHub\PMBusQueryTool\PMBUSQueryTool\bin\Release\NationalInstruments.VisaNS.dll
+C:\Users\Sera.Shao\Documents\GitHub\PMBusQueryTool\PMBUSQueryTool\bin\Release\TIDP.SAA2.dll
+C:\Users\Sera.Shao\Documents\GitHub\PMBusQueryTool\PMBUSQueryTool\obj\Release\PMBUSQue.66B3C798.Up2Date
+C:\Users\Sera.Shao\Documents\GitHub\PMBusQueryTool\PMBUSQueryTool\obj\Release\PMBUSQueryTool.exe
+C:\Users\Sera.Shao\Documents\GitHub\PMBusQueryTool\PMBUSQueryTool\obj\Release\PMBUSQueryTool.pdb
+C:\Users\Sera.Shao\Documents\GitHub\PMBUSQueryTool\PMBUSQueryTool\obj\Release\PMBUSQueryTool.PMBUSQueryTool.resources

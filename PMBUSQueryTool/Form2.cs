@@ -14,7 +14,7 @@ using TIDP.SAA;
 
 namespace PMBUSQueryTool
 {
-    public partial class Form2 : Form
+    public partial class PMBUSQueryTool : Form
     {
         
         private static bool IsAdapterOK = false;
@@ -35,7 +35,7 @@ namespace PMBUSQueryTool
         public bool selectedAllFlag = false;
         
 
-        public Form2()
+        public PMBUSQueryTool()
         {
             InitializeComponent();
             InitCheckBoxList();

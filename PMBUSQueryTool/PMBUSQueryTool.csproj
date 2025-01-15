@@ -48,7 +48,7 @@
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="TIDP.SAA2">
-      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\EGIPVerifyDLL\TIDP.SAA2.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\肯微科技\dll\TIDP.SAA2.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
